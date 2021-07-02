@@ -3,3 +3,5 @@
 
 a = input("Hi")
 print(type(a))
+
+# Strings are immutable
