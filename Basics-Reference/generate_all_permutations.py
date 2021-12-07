@@ -15,7 +15,7 @@ def generate_permutations(nums, start):
         ret.extend(perms)
         # In the step before, you swapped [1,2,3] => [2,1,3] Now 2 and 3 will get swapped, which is not expected, so
         # Swap again
-        # nums[start], nums[i] = nums[i], nums[start]
+        nums[start], nums[i] = nums[i], nums[start]
     return ret
 
 
