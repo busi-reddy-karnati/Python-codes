@@ -1,36 +1,24 @@
-def isvalid(s):
-    print(s)
-    if len(set(list(s))) == 1:
-        return True
-    return False
+def give_ans(n,ar):
+    if n == 1:
+        return 0
+    hmap = {}
+    max_freq = 0
+    for num in ar:
+        if num in hmap:
+            hmap[num]+=1
+            max_freq = max(max_freq,hmap[num])
+        else:
+            hmap[num] = 1
 
-
-def answer(s):
-    n = len(s)
-    if n % 2:
-        print(-1)
-        return
-    div = 1
-    ans = 1
-    while div <= n:
-        if n % div != 0:
-            print(-1)
-            return
-        idx = 0
-        for i in range(div):
-            nu = int(idx + (n / div))
-            print(idx,nu)
-            if isvalid(s[idx:nu]):
-                # print(s[idx:nu])
-                print(ans - 1)
-                return
-            idx = int(idx + (n / div))
-        ans += 1
-        div *= 2
-    print(-1)
-
-
+    if max_freq < 2:
+        return -1
+    init_lists = n
+    final_lists = max_freq//2
+    return init_lists-final_lists
 t = int(input())
 for i in range(t):
-    s = input()
-    answer(s)
+    n = int(input())
+    ar = list(map(int,input().split()))
+    print(give_ans(n,ar))
+
+
