@@ -9,6 +9,11 @@ class DisjointSetUnionByRank:
         return a
 
     def union(self, a, b):
+        """
+        You need to update the rank of the root only because that's what we use next for reference
+        :param a:
+        :param b:
+        """
         rootA = self.find_root(a)
         rootB = self.find_root(b)
         if self.rank[rootB] > self.rank[rootA]:
