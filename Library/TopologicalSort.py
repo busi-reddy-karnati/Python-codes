@@ -1,19 +1,26 @@
 from Library.Graph import Graph
 
-g = Graph(6,[[0,1],[1,2],[2,4],[3,1],[1,5],[5,2]])
+g = Graph(6, [[2, 3], [3, 1], [4, 0], [4, 1], [5, 2], [5, 1]])
+
+
 def topological_sort(graph):
     visited = set()
     stack = []
     for vertex in graph.vertices:
         if vertex not in visited:
-            visit(graph, vertex, stack, visited)
-    print(stack[::-1])
+            stack = dfs(vertex, graph, visited, stack)
+    print(stack)
 
-def visit(graph, node, stack, visited):
-    for child in graph.children[node]:
+
+def dfs(root, graph, visited, stack):
+    visited.add(root)
+    for child in graph.children[root]:
         if child not in visited:
             visited.add(child)
-            visit(graph, child, stack, visited)
-    stack.append(node)
+            stack = dfs(child, graph, visited, stack)
+    stack.append(root)
+    return stack
+
 
 topological_sort(g)
+
